@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        referrerpolicy="no-referrer" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {{!-- css link --}}
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    {{!-- icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/stylesheet/style.css">
+    <link rel="stylesheet" href="/static/stylesheet/styles.css">
+    <link rel="stylesheet" href="wwebsite/public/js/script.js">
+    <title>विश्वपत्रकार महासंघ</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        .itemx {
+            margin: 10px;
+        }
+
+
+        .myscrolls {
+
+            width: 100%;
+            height: 280px;
+            overflow-y: scroll;
+
+        }
+    </style>
+
+    <!--This is my navbar-->
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #0175c0;" id="m">
+        <div class="container">
+            <a class="navbar-brand fw-bolder" style="color: rgb(232, 219, 219);" href="." onclick="zoomLogo()">
+                <img class="img-fluid rounded-circle" id="logoImage" src="/static/images/logo vpm.png" alt="" srcset=""
+                    onerror="this.src='/static/images/logo.png'" style="width: 40px; height: 40px;">
+                &nbsp;विश्वपत्रकार महासंघ</a>
+            <div class="middlepara">पत्रकारों का राष्ट्रीय पंजीकृत संगठन</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bolder navsize" aria-current="page" href="/"
+                            style="color: white;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder navsize" onclick="removenoti();" href="/news"
+                            style="color: white;">News
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder navsize" onclick="removenoti();" href="/about"
+                            style="color: white;">About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder navsize" onclick="removenoti();" href="/views/login"
+                            style="color: white;">Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder navsize" onclick="removenoti();" href="/views/registration"
+                            style="color: white;">Register
+                        </a>
+                    </li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="true">
+                            Menu
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/gallery">Gallery</a></li>
+                            <li><a class="dropdown-item" href="/views/donation">Donate</a></li>
+                            <li><a class="dropdown-item" href="/views/contact-us">contact-us</a></li>
+                        </ul>
+                    </div>
+
+
+
+            </div>
+        </div>
+        <div id="google_element">
+
+        </div>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+    <script src="/wwebsite/public/js/script.js"></script>
+
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+
+    <script>
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement("google_element")
+        }
+    </script>
+
+    <script>
+        function zoomLogo() {
+    // Get the logo image element by its id
+    const logoImage = document.getElementById("logoImage");
+    
+    // Add CSS classes to apply the zoom effect and center the logo
+    logoImage.style.transition = "transform 0.5s ease, top 0.5s ease, left 0.5s ease";
+    logoImage.style.position = "fixed";
+    logoImage.style.top = "50%";
+    logoImage.style.left = "50%";
+    logoImage.style.transform = "translate(-50%, -50%) scale(6)"; // Adjust scale as needed
+
+    // Reset the logo to its original position and size when the user clicks anywhere else
+    document.addEventListener("click", function(event) {
+        if (event.target !== logoImage) {
+            logoImage.style.position = "";
+            logoImage.style.transform = "";
+            logoImage.style.top = "";
+            logoImage.style.left = "";
+        }
+    }, { once: true });
+}
+
+    </script>
+    </body>
+
+
+</html>
+
+<!--endnavbar-->

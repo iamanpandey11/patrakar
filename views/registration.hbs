@@ -1,0 +1,302 @@
+{{>navbar}}
+
+<div class="containerlogin">
+    <h1 class="head">Registration</h1>
+    <form action="./registration" method="post" onsubmit="showAlert(event)">
+        <div class="form-group">
+            <label for="reg_type">Registration Type</label>
+            <select class="form-control" id="reg_type" name="occupation" required>
+                <option value="General">General</option>
+                <option value="Citizen Reporter">Citizen Reporter</option>
+                <option value="Reporter">Reporter</option>
+                <option value="Student Reporter">Student Reporter</option>
+                <option value="Webportal Reporter">Webportal Reporter</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="First">First Name</label>
+            <input type="text" name="firstname" id="First" required>
+        </div>
+        <div class="form-group">
+            <label for="last">Last Name</label>
+            <input type="text" name="lastname" id="last" required>
+        </div>
+        <div class="form-group">
+            <label for="birth">Date of Birth</label>
+            <input type="date" name="dateOfBirth" id="birth" required>
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female" required> Female
+        </div>
+        <div class="form-group">
+            <label for="number">Mobile Number</label>
+            <input type="number" name="phoneNumber" id="number" required>
+        </div>
+        <div class="form-group">
+            <label for="wp_number">WhatsApp Number</label>
+            <input type="number" name="whatsappNumber" id="wp_number" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="password-container">
+            <label for="passwordField">Password</label>
+            <input type="password" name="password" class="password-input" id="passwordField"
+                placeholder="Enter Password">
+            <span class="toggle-icon" id="toggleIcon" onclick="togglePasswordVisibility()">👁️</span>
+        </div>
+        <div class="form-group">
+            <label for="confirm_pass">Confirm Password</label>
+            <input type="password" name="confirmpassword" id="confirm_pass" required>
+        </div>
+        <div class="form-group">
+            <label for="Add">Postal Address</label>
+            <input type="text" name="address" id="Add" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select name="country" id="country" required>
+                <option value="india">India</option>
+                <option value="other country">Other Country</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="stat">State</label>
+            <input type="text" name="state" id="stat" required>
+        </div>
+        <div class="form-group">
+            <label for="dist">District</label>
+            <input type="text" name="District" id="dist" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City/Town</label>
+            <input type="text" name="city" id="city" required>
+        </div>
+        <div class="form-group">
+            <label for="pin">Pincode</label>
+            <input type="number" name="zip" id="pin" required>
+        </div>
+        <div class="form-group">
+            <label for="Adha">Aadhar Number</label>
+            <input type="number" name="adharNumber" id="Adha" required>
+        </div>
+        <div class="form-group">
+            <label for="pan">PAN Number</label>
+            <input type="number" name="pan" id="pan" required>
+        </div>
+        <div class="form-group">
+            <label for="intro">Your Brief Introduction</label><br>
+            <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
+        </div>
+        <div class="button2">
+            <button type="submit" onclick="openPopup()"> Submit </button>
+            <div class="popup-submit" id="popup-submit">
+                <img src="/static/images/checkmark-png-28.png" class="popupimg">
+                <h2>Thank you!</h2>
+                <p>Your details has been Successfully submitted. Thankyou!</p>
+                <button id="btn4" type="button" onclick="closePopup()">Ok</button>
+
+            </div>
+        </div>
+    </form>
+</div> 
+
+
+
+{{!-- <div class="containereg">
+    <h1 style="text-align: center;">Registration</h1>
+
+    <form action="/registration" method="post" id="registrationForm"  onsubmit="showAlert(event)" >
+        <div class="form first">
+            <div class="detail-personal">
+                <span class="title">Personal details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label> Full name</label>
+                        <input type="text" name="first name" placeholder="Enter your name" required>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Mother Name</label>
+                        <input type="text" name="Mother name" placeholder="Enter your mother name" required>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="input-field">
+                        <label> Father name</label>
+                        <input type="text" name="Father name" placeholder="Enter your Father name" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Email</label>
+                        <input type="email" name="Email" placeholder="Enter your Email" required>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Qualification</label>
+                        <input type="text" name="fqualification" placeholder="Enter your Qualification    " required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Adhar number</label>
+                        <input type="number" name="Adhar" placeholder="Enter your adhar no." required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Gender</label>
+                        <input type="text" name="Gender" placeholder="Enter your Gender" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Nationality</label>
+                        <input type="text" name="Nationality" placeholder="Enter your Nationality" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Permanent address</label>
+                        <input type="text" name="address" placeholder="Enter your Permanent address " required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Current address</label>
+                        <input type="text" name="address" placeholder="Enter your Current address" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Mobile.number</label>
+                        <input type="number" name="number" placeholder="Enter your Mobile.numbe" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Pin code</label>
+                        <input type="number" name="pin code" placeholder="Enter your Pin code " required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>D.O.B</label>
+                        <input type="date" name="dob" placeholder="Enter your D.O.B" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>PAN Number</label>
+                        <input type="number" name="pan" placeholder="Enter your PAN Number" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Choose a profile picture:</label>
+                        <input type="file" name="photo" required>
+                    </div>
+                </div>
+
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label for="passwordField">Password</label>
+                        <input type="password" name="password" placeholder="Enter your password">
+                        <span class="toggle-icon" id="toggleIcon" onclick="togglePasswordVisibility()"></span>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label for="passwordField">Confirm Password</label>
+                        <input type="password" name="password" placeholder="Enter your confirm password">
+                        <span class="toggle-icon" id="toggleIcon" onclick="togglePasswordVisibility()"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="button2">
+            <button type="button" onsubmit()>Submit</button>
+        </div>
+    </form>
+</div> --}}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+<script>
+
+    { { !-- for password--} }
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('passwordField');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.textContent = '👁️';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.textContent = '👁️';
+        }
+    }
+</script>
+
+<script>
+    function showAlert(event) {
+        event.preventDefault(); // Prevent form submission for now
+
+        // Collect form data
+        const regType = document.getElementById('reg_type').value;
+        const firstName = document.getElementById('First').value;
+        const lastName = document.getElementById('last').value;
+        const phoneNumber = document.getElementById('number').value;
+        // Repeat this for other form fields...
+
+        // Display alert with form data
+        
+        alert(`Registration Successful!\nRegistration Type: ${regType}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nPhone Number: ${phoneNumber}`);
+
+        // Optionally, you can submit the form after showing the alert
+        event.currentTarget.submit();
+    }
+
+</script>
+
+<script>
+    let popup = document.getElementById("popup-submit");
+
+    function openPopup() {
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup() {
+        popup.classList.remove("open-popup");
+    }
+</script>
+
+
+
+
+</html>
+</body>
+{{>footer}}
