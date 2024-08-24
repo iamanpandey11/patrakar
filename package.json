@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/app.js -e js,hbs",
-     "build": "handlebars views -f dist/index.html"
+     "build": "mkdir -p dist && handlebars views -f dist/templates.js"
+
   
   },
   "keywords": [],
