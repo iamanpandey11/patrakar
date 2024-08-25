@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js -e js,hbs",
-     "build": "mkdir -p dist && handlebars views -f dist/templates.js"
 
-  
-  },
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "node netlify/functions/app.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,6 +21,7 @@
   "dependencies": {
     "handlebars-cli": "^0.1.2",
     "mongod": "^2.0.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "serverless-http": "^3.2.0"
   }
 }

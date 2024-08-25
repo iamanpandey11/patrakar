@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+  publish = "public"  # Adjust if your static files are in a different directory
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/app"
+  status = 200

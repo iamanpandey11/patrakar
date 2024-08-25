@@ -1,20 +1,19 @@
-console.log("Starting");
-
+console.log("this is me and app is starting:");
 const express = require("express");
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
-const { MongoClient } = require("mongodb"); // Import MongoClient from the mongodb package
+const { MongoClient } = require("mongodb");
 const path = require("path");
-// const detail= require("./models/detail");
-const Registeration = require("./models/register");
+const serverless = require("serverless-http");
 
 const app = express();
+const router = express.Router();
 
-const staticPath = path.join(__dirname, "../static/static");
-// console.log(staticPath);
+// Paths for Netlify environment
+const staticPath = path.join(__dirname, "../../static/static");
+const routes = require("../../src/routes/main");
 
-const routes = require("./routes/main");
-
+// Middleware setup
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -25,23 +24,15 @@ app.use("/static", express.static("public"));
 app.use(express.static(staticPath));
 app.use("", routes);
 
-// middleware
-app.use(express.static(staticPath));
-
-// for database tests
-
-app.use(express.json());
-// app.use(express.urlencoded({extended:true}));
-
-// (template engine)
+// View engine setup
 app.set("view engine", "hbs");
-app.set("views", "views");
-hbs.registerPartials("views/partials");
+app.set("views", path.join(__dirname, "../../views")); // Ensure correct path
+hbs.registerPartials(path.join(__dirname, "../../views/partials")); // Ensure correct path
 
-// db connection
-MongoClient.connect(
-  "mongodb+srv://pushpanjal:Khushi@cluster0.5qfi9gh.mongodb.net/"
-)
+// MongoDB connection
+const uri = "mongodb+srv://pushpanjal:Khushi@cluster0.5qfi9gh.mongodb.net/";
+const clientPromise = MongoClient.connect(uri);
+clientPromise
   .then((client) => {
     const db = client.db(); // Get the database from the client
     console.log("MongoDB connected");
@@ -79,7 +70,7 @@ MongoClient.connect(
 
           console.log("Registration successful:", result);
 
-          res.status(200).render("index"); // Assuming "index.hbs" is in the root of the views directory
+          res.status(200).send("index"); // Assuming "index.hbs" is in the root of the views directory
         } else {
           res.send("Password is incorrect");
         }
@@ -96,3 +87,41 @@ MongoClient.connect(
   .catch((err) => {
     console.error("MongoDB connection error:", err);
   });
+// router.post("/views/registration", async (req, res) => {
+//   try {
+//     const password = req.body.password;
+//     const cpassword = req.body.confirmpassword;
+//     if (password === cpassword) {
+//       const client = await clientPromise;
+//       const db = client.db();
+//       const registration = {
+//         firstname: req.body.firstname,
+//         lastname: req.body.lastname,
+//         email: req.body.email,
+//         password: password,
+//         confirmpassword: cpassword,
+//         phoneNumber: req.body.phoneNumber,
+//         dateOfBirth: req.body.dateOfBirth,
+//         city: req.body.city,
+//         country: req.body.country,
+//         state: req.body.state,
+//         zip: req.body.zip,
+//         occupation: req.body.occupation,
+//         whatsappNumber: req.body.whatsappNumber,
+//         adharNumber: req.body.adharNumber,
+//         gender: req.body.gender,
+//       };
+//       await db.collection("registrations").insertOne(registration);
+//       res.status(200).render("index");
+//     } else {
+//       res.send("Password is incorrect");
+//     }
+//   } catch (error) {
+//     console.error("Error while registering:", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+
+app.use(router);
+
+module.exports.handler = serverless(app);
