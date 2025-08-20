@@ -1,3 +1,6 @@
+//dbuser
+//dbpass
+
 console.log("Starting");
 
 const express = require("express");
@@ -40,7 +43,7 @@ hbs.registerPartials("views/partials");
 
 // db connection
 MongoClient.connect(
-  "mongodb+srv://pushpanjal:Khushi@cluster0.5qfi9gh.mongodb.net/"
+  "mongodb+srv://dbuser:dbpass@testpatrakar.ys3vyf6.mongodb.net/"
 )
   .then((client) => {
     const db = client.db(); // Get the database from the client
