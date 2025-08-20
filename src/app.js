@@ -1,6 +1,5 @@
-//dbuser
-//dbpass
-
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 console.log("Starting");
 
 const express = require("express");
@@ -42,9 +41,7 @@ app.set("views", "views");
 hbs.registerPartials("views/partials");
 
 // db connection
-MongoClient.connect(
-  "mongodb+srv://dbuser:dbpass@testpatrakar.ys3vyf6.mongodb.net/"
-)
+MongoClient.connect(process.env.MONGO_URI)
   .then((client) => {
     const db = client.db(); // Get the database from the client
     console.log("MongoDB connected");
@@ -92,7 +89,7 @@ MongoClient.connect(
       }
     });
 
-    app.listen(process.env.PORT || 3000, () => {
+    app.listen(PORT || 3000, () => {
       console.log("Server running on port 3000");
     });
   })
